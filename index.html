@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Cormorant Garamond', serif;
+  background:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ========================= */
+/* FIRST PAGE */
+/* ========================= */
+
+.first-page{
+
+  width:100%;
+  height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#f8f4ef;
+
+  position:fixed;
+  top:0;
+  left:0;
+
+  z-index:1000;
+}
+
+.main-envelope{
+
+  width:340px;
+  height:230px;
+
+  background:#f1ebe4;
+
+  position:relative;
+
+  border-radius:10px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.18);
+}
+
+.main-flap{
+
+  position:absolute;
+
+  width:100%;
+  height:120px;
+
+  background:#e6ddd3;
+
+  top:0;
+  left:0;
+
+  clip-path:polygon(0 0,100% 0,50% 100%);
+
+  transform-origin:top;
+
+  transition:1s;
+
+  z-index:3;
+}
+
+.main-seal{
+
+  width:85px;
+  height:85px;
+
+  border-radius:50%;
+
+  background:#d5b07b;
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-size:34px;
+
+  z-index:5;
+}
+
+.main-envelope.open .main-flap{
+
+  transform:rotateX(180deg);
+}
+/* SMOOTH PAGE TRANSITION */
+.first-page {
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.first-page.hide {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+/* fourth page initial hidden state */
+.fourth-page {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: 1.2s ease;
+}
+
+.fourth-page.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* SPLIT ENVELOPE */
+.envelope-left{
+  position:absolute;
+  width:50%;
+  height:100%;
+  left:0;
+  background:#e6ddd3;
+  clip-path:polygon(0 0,100% 50%,0 100%);
+  transform-origin:left;
+  transition:1s ease;
+}
+
+.envelope-right{
+  position:absolute;
+  width:50%;
+  height:100%;
+  right:0;
+  background:#e6ddd3;
+  clip-path:polygon(100% 0,100% 100%,0 50%);
+  transform-origin:right;
+  transition:1s ease;
+}
+
+.main-envelope.open .envelope-left{
+  transform:rotateY(-120deg) translateX(-20px);
+  opacity:0;
+}
+
+.main-envelope.open .envelope-right{
+  transform:rotateY(120deg) translateX(20px);
+  opacity:0;
+}
+
+.main-envelope.open .main-seal{
+  transform:scale(0);
+}
+/* ========================= */
+/* FOURTH PAGE */
+/* ========================= */
+
+.fourth-page{
+
+  width:100%;
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(rgba(255,255,255,0.10),
+  rgba(255,255,255,0.10)),
+  url('invitation image.jpeg');
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* REMOVE BLUR */
+
+.fourth-page::before{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  backdrop-filter:none;
+
+  background:rgba(255,255,255,0.02);
+}
+
+/* FLOWERS */
+
+.flowers{
+
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:1;
+}
+
+.flower{
+
+  position:absolute;
+
+  top:-80px;
+
+  font-size:28px;
+
+  animation:fall linear infinite;
+
+  opacity:0.9;
+}
+
+.flower:nth-child(1){
+  left:5%;
+  animation-duration:10s;
+}
+
+.flower:nth-child(2){
+  left:15%;
+  animation-duration:14s;
+}
+
+.flower:nth-child(3){
+  left:28%;
+  animation-duration:11s;
+}
+
+.flower:nth-child(4){
+  left:40%;
+  animation-duration:16s;
+}
+
+.flower:nth-child(5){
+  left:55%;
+  animation-duration:12s;
+}
+
+.flower:nth-child(6){
+  left:70%;
+  animation-duration:15s;
+}
+
+.flower:nth-child(7){
+  left:82%;
+  animation-duration:13s;
+}
+
+.flower:nth-child(8){
+  left:92%;
+  animation-duration:17s;
+}
+
+@keyframes fall{
+
+  0%{
+
+    transform:
+    translateY(-100px)
+    rotate(0deg);
+
+    opacity:0;
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  100%{
+
+    transform:
+    translateY(120vh)
+    rotate(360deg);
+
+    opacity:0.8;
+  }
+}
+
+/* ISLAMIC TEXT */
+
+.islamic-text{
+
+  position:absolute;
+
+  top:90px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  z-index:5;
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:34px;
+
+  font-weight:500;
+
+  color:#5f5448;
+
+  letter-spacing:4px;
+
+  text-align:center;
+
+  line-height:1.4;
+
+  text-shadow:
+  0 2px 8px rgba(255,255,255,0.4);
+
+  animation:fadeUp 2s ease;
+}
+
+/* NAMES */
+
+.names{
+
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  animation:fadeUp 2s ease;
+}
+
+.couple-name{
+
+  font-family:'Great Vibes', cursive;
+
+  font-size:95px;
+
+  color:#111111;
+
+  line-height:1;
+}
+
+.and-text{
+
+  font-size:22px;
+
+  letter-spacing:6px;
+
+  color:#111111;
+
+  margin:12px 0;
+
+  text-transform:uppercase;
+}
+
+.married-text{
+
+  margin-top:28px;
+
+  font-size:30px;
+
+  color:#111111;
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ========================= */
+/* SECOND PAGE */
+/* ========================= */
+
+/* REVEAL FLOWERS */
+
+.reveal-flowers{
+
+  position:absolute;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:50;
+}
+
+.reveal-flower{
+
+  position:absolute;
+
+  top:-100px;
+
+  font-size:28px;
+
+  opacity:0;
+}
+
+/* positions */
+
+.reveal-flower:nth-child(1){
+  left:50%;
+  --x:-250px;
+}
+
+.reveal-flower:nth-child(2){
+  left:50%;
+  --x:-180px;
+}
+
+.reveal-flower:nth-child(3){
+  left:50%;
+  --x:-100px;
+}
+
+.reveal-flower:nth-child(4){
+  left:50%;
+  --x:0px;
+}
+
+.reveal-flower:nth-child(5){
+  left:50%;
+  --x:100px;
+}
+
+.reveal-flower:nth-child(6){
+  left:50%;
+  --x:180px;
+}
+
+.reveal-flower:nth-child(7){
+  left:50%;
+  --x:250px;
+}
+
+.reveal-flower:nth-child(8){
+  left:50%;
+  --x:320px;
+}
+
+/* START FALL */
+
+.reveal-flowers.active .reveal-flower{
+
+  animation:revealFall 4s linear forwards;
+}
+
+/* delays */
+
+.reveal-flowers.active .reveal-flower:nth-child(1){
+  animation-delay:0s;
+}
+
+.reveal-flowers.active .reveal-flower:nth-child(2){
+  animation-delay:0.4s;
+}
+
+.reveal-flowers.active .reveal-flower:nth-child(3){
+  animation-delay:0.8s;
+}
+
+.reveal-flowers.active .reveal-flower:nth-child(4){
+  animation-delay:1.2s;
+}
+
+.reveal-flowers.active .reveal-flower:nth-child(5){
+  animation-delay:1.6s;
+}
+
+.reveal-flowers.active .reveal-flower:nth-child(6){
+  animation-delay:2s;
+}
+
+@keyframes revealFall{
+
+  0%{
+    transform:
+    translate(0,-120px)
+    rotate(0deg)
+    scale(0.2);
+
+    opacity:0;
+  }
+
+  15%{
+    opacity:1;
+  }
+
+  40%{
+    transform:
+    translate(calc(var(--x) * 0.4), 25vh)
+    rotate(180deg)
+    scale(0.8);
+  }
+
+  70%{
+    transform:
+    translate(calc(var(--x) * 0.8), 70vh)
+    rotate(500deg)
+    scale(1);
+  }
+
+  100%{
+    transform:
+    translate(var(--x),120vh)
+    rotate(720deg)
+    scale(1.2);
+
+    opacity:0;
+  }
+}
+
+.second-page{
+
+  min-height:100vh;
+  width:100%;
+
+  background:#ffffff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:60px 20px;
+
+  position:relative;   /* ADD THIS */
+  overflow:hidden;     /* ADD THIS */
+}
+
+.date-container{
+
+  width:100%;
+  max-width:900px;
+
+  text-align:center;
+}
+
+.reveal-flower{
+  z-index:100;
+}
+
+.bismillah{
+
+  font-size:28px;
+
+  color:#8d919d;
+
+  margin-bottom:12px;
+
+  letter-spacing:2px;
+
+  text-align:center;
+}
+
+.date-title{
+
+  font-family:'Great Vibes', cursive;
+
+  font-size:90px;
+
+  color:#7e8492;
+
+  font-weight:400;
+
+  margin-bottom:10px;
+}
+
+.scratch-text{
+
+  font-size:28px;
+
+  color:#8d919d;
+
+  letter-spacing:1px;
+
+  margin-bottom:50px;
+}
+
+.scratch-wrapper{
+
+  display:flex;
+  justify-content:center;
+  gap:40px;
+
+  flex-wrap:wrap;
+}
+
+.scratch-box{
+
+  width:180px;
+  height:180px;
+
+  border-radius:20px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:#dbe8f7;
+
+  box-shadow:
+  inset 0 0 20px rgba(255,255,255,0.5),
+  0 10px 20px rgba(0,0,0,0.08);
+}
+
+.hidden-date{
+
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:42px;
+
+  color:#74839b;
+
+  font-weight:600;
+}
+
+.scratch-layer{
+
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+  background:
+  linear-gradient(
+  135deg,
+  #d9e6f7,
+  #c7d9f0
+  );
+
+  cursor:pointer;
+
+  transition:1s;
+}
+
+.scratch-layer.scratched{
+
+  opacity:0;
+}
+
+/* LABEL */
+
+.label-wrapper{
+
+  display:flex;
+  justify-content:center;
+
+  gap:125px;
+
+  margin-top:18px;
+  margin-bottom:20px;
+
+  flex-wrap:wrap;
+}
+
+.label-wrapper span{
+
+  font-size:22px;
+
+  letter-spacing:6px;
+
+  color:#8c9099;
+}
+
+/* YOU'RE INVITED */
+
+.invite-text{
+
+  margin-top:25px;
+  margin-bottom:60px;
+
+  font-family:'Great Vibes', cursive;
+
+  font-size:58px;
+
+  color:#7e8492;
+
+  opacity:0;
+
+  transform:translateY(20px);
+
+  transition:1s ease;
+}
+
+.invite-text.show-text{
+
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+/* ENVELOPE */
+
+.envelope-wrapper{
+
+  display:flex;
+  justify-content:center;
+}
+
+.envelope{
+
+  width:600px;
+  height:420px;
+
+  position:relative;
+
+  background:#d7e6f8;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  box-shadow:
+  0 20px 35px rgba(0,0,0,0.12);
+}
+
+.top-flap{
+
+  position:absolute;
+
+  width:100%;
+  height:240px;
+
+  background:#c6daf3;
+
+  top:0;
+  left:0;
+
+  clip-path:polygon(0 0,100% 0,50% 100%);
+
+  transform-origin:top;
+
+  transition:1s;
+
+  z-index:5;
+}
+
+.letter-card{
+
+  width:75%;
+
+  background:#fffdfb;
+
+  padding:45px 35px;
+
+  border-radius:18px;
+
+  position:absolute;
+
+  left:50%;
+  top:100%;
+
+  transform:translateX(-50%);
+
+  transition:1s;
+
+  z-index:2;
+
+  box-shadow:
+  0 15px 25px rgba(0,0,0,0.08);
+}
+
+.letter-card h2{
+
+  font-family:'Great Vibes', cursive;
+
+  font-size:52px;
+
+  color:#7f8795;
+
+  font-weight:400;
+
+  margin-bottom:25px;
+}
+
+.letter-card p{
+
+  font-size:28px;
+
+  line-height:1.8;
+
+  color:#7d8088;
+}
+
+.envelope.open .top-flap{
+
+  transform:rotateX(180deg);
+}
+
+.envelope.open .letter-card{
+
+  top:60px;
+}
+
+/* ========================= */
+/* FINAL PAGE */
+/* ========================= */
+
+.final-page{
+
+  width:100%;
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:30px 20px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(rgba(255,255,255,0.15),
+  rgba(255,255,255,0.15)),
+  url('final-bg.jpg');
+
+  background-size:cover;
+  background-position:center;
+}
+
+.timeline-container{
+
+  width:100%;
+  max-width:700px;
+
+  text-align:center;
+}
+
+.timeline-title{
+
+  font-family:'Great Vibes', cursive;
+
+  font-size:62px;
+
+  color:#7f8795;
+
+  margin-bottom:60px;
+}
+
+.timeline{
+
+  position:relative;
+
+  width:100%;
+}
+
+.timeline::before{
+
+  content:'';
+
+  position:absolute;
+
+  left:50%;
+  top:0;
+
+  transform:translateX(-50%);
+
+  width:2px;
+  height:100%;
+
+  background:#b8c2d1;
+}
+
+.timeline-item{
+
+  position:relative;
+
+  width:50%;
+
+  padding:20px 40px;
+
+  margin-bottom:30px;
+}
+
+.timeline-item.left{
+
+  left:0;
+  text-align:right;
+}
+
+.timeline-item.right{
+
+  left:50%;
+  text-align:left;
+}
+
+.timeline-dot{
+
+  position:absolute;
+
+  top:30px;
+
+  width:14px;
+  height:14px;
+
+  background:#9db2cf;
+
+  border-radius:50%;
+
+  border:3px solid white;
+}
+
+.timeline-item.left .timeline-dot{
+
+  right:-8px;
+}
+
+.timeline-item.right .timeline-dot{
+
+  left:-8px;
+}
+
+.timeline-time{
+
+  font-size:30px;
+  font-weight:600;
+
+  color:#6f7682;
+}
+
+.timeline-text{
+
+  font-size:22px;
+
+  color:#7f8795;
+
+  margin-top:6px;
+}
+
+/* CLOUD ANIMATION */
+
+.cloud{
+
+  position:absolute;
+
+  top: -14%;
+
+  width:75%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  z-index:20;
+
+  pointer-events:none;
+
+  animation-duration:7s;
+
+  animation-fill-mode:forwards;
+
+  animation-timing-function:ease-in-out;
+
+  animation-play-state:paused;
+}
+
+.cloud-left{
+
+  left:0;
+
+  animation-name:leftCloud;
+}
+
+.cloud-right{
+
+  right:0;
+
+  transform:scaleX(-1);
+
+  animation-name:rightCloud;
+}
+
+@keyframes leftCloud{
+
+  0%{
+    transform:translateX(0);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateX(-100%);
+    opacity:0;
+  }
+}
+
+@keyframes rightCloud{
+
+  0%{
+    transform:translateX(0) scaleX(-1);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateX(100%) scaleX(-1);
+    opacity:0;
+  }
+}
+
+.timeline-container{
+
+  position:relative;
+
+  z-index:5;
+}
+.size{
+  font-size:14px;
+  margin-top:15px;
+  color:#7f8795;
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+  .bismillah{
+    font-size:15px;
+  }
+
+  .islamic-text{
+    font-size:12px;
+    top:75px;
+    letter-spacing:2px;
+  }
+
+  .main-envelope{
+    width:280px;
+    height:190px;
+  }
+
+  .couple-name{
+    font-size:62px;
+  }
+
+  .and-text{
+    font-size:16px;
+    letter-spacing:4px;
+  }
+
+  .married-text{
+    font-size:20px;
+  }
+
+  .flower{
+    font-size:22px;
+  }
+
+  .second-page{
+    padding:40px 15px;
+  }
+
+  .date-title{
+    font-size:58px;
+  }
+
+  .scratch-text{
+    font-size:18px;
+    margin-bottom:35px;
+  }
+
+  .scratch-wrapper{
+    gap:15px;
+  }
+
+  .scratch-box{
+    width:95px;
+    height:95px;
+  }
+
+  .hidden-date{
+    font-size:20px;
+  }
+
+  .label-wrapper{
+    gap:38px;
+    margin-bottom:15px;
+  }
+
+  .label-wrapper span{
+    font-size:12px;
+    letter-spacing:2px;
+  }
+
+  .invite-text{
+    font-size:40px;
+    margin-bottom:40px;
+  }
+
+  .envelope{
+    width:100%;
+    max-width:330px;
+    height:240px;
+  }
+
+  .top-flap{
+    height:135px;
+  }
+
+  .letter-card{
+    width:86%;
+    padding:18px 16px;
+  }
+
+  .letter-card h2{
+    font-size:24px;
+  }
+
+  .letter-card p{
+    font-size:11px;
+    line-height:1.6;
+  }
+
+  .envelope.open .letter-card{
+    top:30px;
+  }
+
+  .timeline-title{
+    font-size:42px;
+  }
+
+  .timeline::before{
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  .timeline-item{
+    width:50%;
+    padding:20px 20px;
+    left:auto !important;
+    text-align:inherit !important;
+  }
+
+  .timeline-item.left{
+    left:0 !important;
+    text-align:right !important;
+  }
+
+  .timeline-item.right{
+    left:50% !important;
+    text-align:left !important;
+  }
+
+  .timeline-dot{
+    top:30px;
+  }
+
+  .timeline-item.left .timeline-dot{
+    right:-8px;
+    left:auto !important;
+  }
+
+  .timeline-item.right .timeline-dot{
+    left:-8px;
+  }
+
+  .timeline-time{
+    font-size:20px;
+  }
+
+  .timeline-text{
+    font-size:14px;
+  }
+
+} /* <-- THIS BRACKET WAS MISSING */
+
+
+
+
+@media(max-width:480px){
+  
+
+  .couple-name{
+    font-size:48px;
+  }
+
+  .married-text{
+    font-size:17px;
+  }
+
+  .flower{
+    font-size:18px;
+  }
+
+  .date-title{
+    font-size:48px;
+  }
+
+  .scratch-text{
+    font-size:16px;
+  }
+
+  .scratch-box{
+    width:82px;
+    height:82px;
+  }
+
+  .hidden-date{
+    font-size:17px;
+  }
+
+  .invite-text{
+    font-size:32px;
+  }
+}
+
+.scroll-hint{
+
+  position:absolute;
+
+  bottom:25px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  font-size:14px;
+
+  letter-spacing:4px;
+
+  color:#ffffff;
+
+  padding:10px 18px;
+
+  border-radius:30px;
+
+  backdrop-filter:blur(8px);
+
+  background:rgba(255,255,255,0.12);
+
+  box-shadow:
+  0 0 15px rgba(255,255,255,0.25);
+
+  animation:
+  floatArrow 2s ease-in-out infinite,
+  glowPulse 2s infinite;
+
+  z-index:20;
+}
+
+@keyframes floatArrow{
+
+  0%{
+    transform:translateX(-50%) translateY(0);
+  }
+
+  50%{
+    transform:translateX(-50%) translateY(8px);
+  }
+
+  100%{
+    transform:translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes glowPulse{
+
+  0%{
+    box-shadow:0 0 10px rgba(255,255,255,0.2);
+  }
+
+  50%{
+    box-shadow:0 0 25px rgba(255,255,255,0.6);
+  }
+
+  100%{
+    box-shadow:0 0 10px rgba(255,255,255,0.2);
+  }
+}
+
+
+
+/* CLEAN COUNTDOWN */
+
+.countdown-box{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:nowrap;
+
+  margin-bottom:55px;
+}
+
+.countdown-item{
+
+  width:120px;
+  height:110px;
+
+  border-radius:22px;
+
+  background:rgba(255,255,255,0.22);
+
+  border:1px solid rgba(255,255,255,0.30);
+
+  backdrop-filter:blur(10px);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+  0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* NUMBERS */
+
+.countdown-item span{
+
+  font-size:42px;
+
+  font-weight:600;
+
+  font-family:'Segoe UI', sans-serif;
+
+  color:#4f5f75;
+
+  line-height:1;
+}
+
+/* LABELS */
+
+.countdown-item p{
+
+  margin-top:10px;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  color:#8a94a5;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .countdown-box{
+    gap:8px;
+  }
+
+  .countdown-item{
+
+    width:72px;
+    height:72px;
+
+    border-radius:16px;
+  }
+
+  .countdown-item span{
+    font-size:22px;
+  }
+
+  .countdown-item p{
+
+    font-size:8px;
+
+    letter-spacing:1px;
+
+    margin-top:5px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+ <audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+  
+
+<!-- FIRST PAGE -->
+
+<section class="first-page" id="firstPage">
+
+  <div class="main-envelope" id="mainEnvelope">
+
+    <!-- ❌ old main-flap remove -->
+
+    <!-- ✅ ADD THIS -->
+    <div class="envelope-left"></div>
+    <div class="envelope-right"></div>
+
+    <div class="main-seal">♡</div>
+
+  </div>
+
+</section>
+
+<!-- FOURTH PAGE -->
+
+<section class="fourth-page">
+
+  <div class="flowers">
+
+    <span class="flower">🌸</span>
+    <span class="flower">🌸</span>
+    <span class="flower">🌸</span>
+    <span class="flower">🌸</span>
+
+    <span class="flower">🌺</span>
+    <span class="flower">🌺</span>
+
+    <span class="flower">🌼</span>
+    <span class="flower">🌼</span>
+
+  </div>
+   
+  <div class="islamic-text">
+  ASSALAMU ALAIKUM
+</div>
+  
+
+  <div class="names">
+
+   
+    <span class="couple-name">
+      Itheriz
+    </span>
+
+    <span class="and-text">
+      weds
+    </span>
+
+    <span class="couple-name">
+      Halisha
+    </span>
+
+    <div class="married-text">
+      are getting married!
+    </div>
+
+  </div>
+
+  <div class="scroll-hint">
+  ↓ Scroll ↓
+</div>
+
+</section>
+
+<!-- SECOND PAGE -->
+
+<section class="second-page">
+
+ <div class="reveal-flowers">
+
+  <span class="reveal-flower">💎</span>
+<span class="reveal-flower">🔹</span>
+<span class="reveal-flower">🔷</span>
+<span class="reveal-flower">⚪</span>
+<span class="reveal-flower">🔵</span>
+<span class="reveal-flower">🩵</span>
+<span class="reveal-flower">✨</span>
+<span class="reveal-flower">❄️</span>
+
+
+</div>
+
+  <div class="date-container">
+
+    <div class="bismillah">
+  INSHA ALLAH
+</div>
+
+    <h1 class="date-title">
+      The Date
+    </h1>
+
+    <p class="scratch-text">
+      ✦ double tap to reveal the date ✦
+    </p>
+
+    <div class="scratch-wrapper">
+
+      <div class="scratch-box">
+
+        <div class="hidden-date">
+          17
+        </div>
+
+        <div class="scratch-layer"></div>
+
+      </div>
+
+      <div class="scratch-box">
+
+        <div class="hidden-date">
+          JUNE
+        </div>
+
+        <div class="scratch-layer"></div>
+
+      </div>
+
+      <div class="scratch-box">
+
+        <div class="hidden-date">
+          2026
+        </div>
+
+        <div class="scratch-layer"></div>
+
+      </div>
+
+    </div>
+
+    <div class="label-wrapper">
+
+      <span>DAY</span>
+      <span>MONTH</span>
+      <span>YEAR</span>
+
+    </div>
+
+    <div class="invite-text" id="inviteText">
+      You're Invited
+    </div>
+
+    <div class="envelope-wrapper">
+
+      <div class="envelope" id="inviteEnvelope">
+
+        <div class="top-flap"></div>
+
+        <div class="letter-card">
+
+          <h2>
+            Together with our families,
+          </h2>
+
+          <p>
+            We invite you to celebrate our
+            beautiful wedding day
+          </p>
+
+          <br>
+
+          <p>
+           <b>وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</b><br>
+  
+   
+           
+            <b>And He placed between you love and mercy</b><br>
+             <b>Surah Ar-Rum 30:21</b>
+          </p>
+
+          <br>
+
+          
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FINAL PAGE -->
+
+<section class="final-page">
+
+  <img src="cloud 1.png" class="cloud cloud-left">
+
+  <img src="cloud 1.png" class="cloud cloud-right">
+
+  <div class="timeline-container">
+
+    <h1 class="timeline-title">
+      Schedule of Events
+    </h1>
+
+    <div class="countdown-box">
+
+  <div class="countdown-item">
+    <span id="days">00</span>
+    <p>Days</p>
+  </div>
+
+  <div class="countdown-item">
+    <span id="hours">00</span>
+    <p>Hours</p>
+  </div>
+
+  <div class="countdown-item">
+    <span id="minutes">00</span>
+    <p>Minutes</p>
+  </div>
+
+  <div class="countdown-item">
+    <span id="seconds">00</span>
+    <p>Seconds</p>
+  </div>
+
+</div>
+
+    <div class="timeline">
+
+      <div class="timeline-item left">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-time">
+          07:00
+        </div>
+
+        <div class="timeline-text">
+          Mehandi Function
+        </div>
+
+        <div class="timeline-text">
+          16:05:2026
+        </div>
+
+        <div class="timeline-text">
+          Ervadi
+        </div>
+       
+
+      </div>
+
+      <div class="timeline-item right">
+
+         <div class="timeline-dot"></div>
+
+        <div class="timeline-time">
+          10:30
+        </div>
+
+        <div class="timeline-text">
+          Wedding Ceremony
+        </div>
+        <div class="timeline-text">
+          Hani Mahal, keelakarai
+        </div>
+
+      </div>
+
+      <div class="timeline-item left">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-time">
+          01:30
+        </div>
+
+        <div class="timeline-text">
+          Reception
+        </div>
+         <div class="timeline-text">
+          20:06:2026 
+        </div>
+         <div class="timeline-text">
+          Trichy
+        </div>
+
+      </div>
+
+    
+
+  </div>
+<div>بارك الله لك وبارك عليك و جمح بينكما في خير</div>
+<div class="size">May Allah bless you and send blessings upon you and bring you together in goodness</div>
+
+</section>
+
+<script>
+
+/* FIRST PAGE */
+
+const mainEnvelope = document.getElementById('mainEnvelope');
+const firstPage = document.getElementById('firstPage');
+const fourthPage = document.querySelector('.fourth-page');
+const bgMusic =
+document.getElementById('bgMusic');
+
+mainEnvelope.addEventListener('click', () => {
+
+  bgMusic.play();
+
+  // envelope open animation
+  mainEnvelope.classList.add('open');
+
+  setTimeout(() => {
+
+    // smooth fade out first page
+    firstPage.classList.add('hide');
+
+    // show fourth page smoothly
+    setTimeout(() => {
+      fourthPage.classList.add('show');
+    }, 600);
+
+    // remove first page fully after animation
+    setTimeout(() => {
+      firstPage.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }, 1200);
+
+  }, 1000);
+});
+
+/* SCRATCH EFFECT */
+
+const scratchLayers =
+document.querySelectorAll('.scratch-layer');
+
+const inviteText =
+document.getElementById('inviteText');
+
+let scratchedCount = 0;
+
+scratchLayers.forEach(layer=>{
+
+  layer.addEventListener('click',()=>{
+
+    if(!layer.classList.contains('scratched')){
+
+      layer.classList.add('scratched');
+
+      scratchedCount++;
+
+      if(scratchedCount === 3){
+
+        setTimeout(()=>{
+
+          inviteText.classList.add('show-text');
+
+
+    document
+    .querySelector('.reveal-flowers')
+    .classList.add('active');
+
+
+
+        },500);
+
+      }
+
+    }
+
+  });
+
+});
+
+/* ENVELOPE OPEN */
+
+const inviteEnvelope =
+document.getElementById('inviteEnvelope');
+
+inviteEnvelope.addEventListener('click',()=>{
+
+  inviteEnvelope.classList.toggle('open');
+
+});
+
+/* CLOUD ANIMATION */
+
+const finalPage =
+document.querySelector('.final-page');
+
+const clouds =
+document.querySelectorAll('.cloud');
+
+window.addEventListener('scroll',()=>{
+
+  const finalTop =
+  finalPage.getBoundingClientRect().top;
+
+  if(finalTop < window.innerHeight - 150){
+
+    clouds.forEach(cloud=>{
+
+      cloud.style.animationPlayState = 'running';
+
+    });
+
+  }
+
+});
+
+/* COUNTDOWN */
+
+const weddingDate =
+new Date("June 17, 2026 00:00:00").getTime();
+
+const countdown = setInterval(()=>{
+
+  const now = new Date().getTime();
+
+  const distance =
+  weddingDate - now;
+
+  const days =
+  Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours =
+  Math.floor((distance %
+  (1000 * 60 * 60 * 24))
+  / (1000 * 60 * 60));
+
+  const minutes =
+  Math.floor((distance %
+  (1000 * 60 * 60))
+  / (1000 * 60));
+
+  const seconds =
+  Math.floor((distance %
+  (1000 * 60))
+  / 1000);
+
+  document.getElementById('days').innerHTML = days;
+  document.getElementById('hours').innerHTML = hours;
+  document.getElementById('minutes').innerHTML = minutes;
+  document.getElementById('seconds').innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>      
